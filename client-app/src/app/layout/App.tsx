@@ -13,11 +13,23 @@ function App() {
     setActivities(response.data);
     })
   }, [])
+
+  function handleSelectActivity(id: string) {
+    setSelectedActivity(activities.find(x => x.id ===id));
+  }
+
+  function handleCancelSelectActivity() {
+    setSelectedActivity(undefined);
+  }
   return (
     <>
       <NavBar/>
       <Container style={{marginTop: '7em'}}>
-      <ActivityDashboard activities = {activities}/>
+      <ActivityDashboard
+       activities = {activities}
+       selectedActivity = {selectedActiivty}
+       selectActivity = {handleSelectActivity}
+       cancelSelectActivity = {handleCancelSelectActivity} />
       </Container>
         
     </>
